@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Blog Post</title>
+
+  <style>
+    /* ===== Reset & Base ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ===== Navbar (Same Style) ===== */
+    nav {
+      background-color: #1e3a8a;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #facc15;
+    }
+
+    /* ===== Form Container ===== */
+    .container {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .form-card {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-card h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #1e3a8a;
+    }
+
+    /* ===== Form Elements ===== */
+    .form-group {
+      margin-bottom: 1.3rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 1rem;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #1e3a8a;
+      box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.15);
+    }
+
+    .form-group textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    /* ===== Button ===== */
+    .btn {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #1e3a8a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #facc15;
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: 3rem;
+      background-color: #1e3a8a;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+   <%- include('./partials/nav.ejs') %>
+
+  <!-- Add Post Form -->
+  <div class="container">
+    <div class="form-card">
+      <h2>Add New Blog Post</h2>
+
+      <form action="/blogs" method="post">
+        <div class="form-group">
+          <label for="title">Blog Title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Enter blog title"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            placeholder="Enter author name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea
+            id="content"
+            name="content"
+            placeholder="Write your blog content here..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn">Publish Post</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 My Blog. All Rights Reserved.
+  </footer>
+
+</body>
+</html>

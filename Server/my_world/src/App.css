@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Oswald:wght@200..700&family=Rubik+Vinyl&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+/* Err404 Start */
+.err404-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.err404-animation {
+  max-width: 80%;
+  max-height: 60%;
+  margin-bottom: 20px;
+}
+
+.err404-link {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+.err404-link:hover {
+  text-decoration: underline;
+}
+
+/* Err404 Ends */
+
+/* ===============================
+   NAVBAR BASE (Closed state)
+================================ */
+.menu-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+
+  padding: 14px 0;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition: transform 0.35s ease, background 0.4s ease,
+    backdrop-filter 0.4s ease;
+  will-change: transform;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px; /* optional side padding */
+}
+
+.brand {
+  font-size: 0.9rem;
+  letter-spacing: 0.25em;
+  font-weight: 600;
+  color: #000000;
+  opacity: 0.9;
+  user-select: none;
+}
+
+/* Burger Icon */
+.burger {
+  width: 34px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.burger .dot {
+  height: 2px;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  border-radius: 4px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.burger:hover .dot:first-child {
+  transform: translateX(4px);
+}
+
+.burger:hover .dot:last-child {
+  transform: translateX(-4px);
+}
+
+/* ===============================
+   FULLSCREEN MENU (Open State)
+================================ */
+.burger {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.burger.open {
+  color: white;
+}
+
+/* if dots inherit color */
+.burger .dot {
+  background: currentColor;
+}
+.brand {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.brand.open {
+  color: white;
+}
+
+.fullscreen-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0; /* Closed state */
+  background: black;
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 998;
+  transition: height 0.5s ease;
+}
+
+.fullscreen-menu.open {
+  height: 100%; /* Open state */
+}
+
+.fullscreen-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.fullscreen-menu ul li {
+  font-size: 3rem;
+  margin: 1.5rem 0;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.fullscreen-menu ul li:hover {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   SCROLL SECTION (for long pages)
+================================ */
+.scroll-section {
+  height: 430vh;
+  position: relative;
+}
+
+.sticky-layer {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===============================
+   SMOOTH SCROLL
+================================ */
+html {
+  scroll-behavior: smooth;
+}
+ul li {
+  transition: opacity 0.3s; /* fixed the typo */
+  cursor: pointer;
+}
+
+ul:hover li {
+  opacity: 0.5;
+}
+
+ul li:hover {
+  opacity: 1;
+}
+
+.arrow {
+  font-size: 1.5rem;
+  vertical-align: super;
+  margin-right: 10px;
+  position: relative;
+  top: 10px;
+}
+
+/* Scroll range */
+.scroll-section {
+  height: 500vh;
+  position: relative;
+}
+
+/* Sticky container (releases after scroll-section ends) */
+.sticky-layer {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  
+  background: rgb(255, 255, 255);
+
+}
+
+/* Base layer */
+.base-page {
+  inset: 0;
+
+  color: rgb(0, 0, 0);
+  font-size: 3rem;
+  font-weight: bold;
+}
+.hero-div {
+  margin-top: 10%;
+}
+.name {
+  font-size: 50px;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+}
+.surname {
+  position: relative;
+}
+.surname .cat {
+  position: absolute;
+  margin-top: -10%;
+}
+.surname .cat:nth-child(2) {
+  height: 100px;
+  transform: translateY(-80%);
+}
+.subhero {
+  font-size: 30px;
+  font-family: "Rubik Vinyl", system-ui;
+  font-weight: 600;
+}
+.fullstop {
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: #000;
+}
+.copyright {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  border: 5px solid black;
+  transform: scale(0.4);
+  margin-top: 40%;
+  font-weight: 800;
+}
+
+.copyright .copy {
+  position: absolute;
+  background: #000;
+}
+.copyright .copy:nth-child(1) {
+  top: -5px;
+  left: -25%;
+  width: 150%;
+  height: 5px;
+}
+.copyright .copy:nth-child(3) {
+  bottom: -5px;
+  left: -25%;
+  width: 150%;
+  height: 5px;
+}
+.collage {
+  margin-top: -20%;
+}
+
+/* Animated reveal layer */
+.netpage {
+  position: absolute;
+  inset: 0;
+  background: rgb(241, 235, 53);
+  font-size: 3rem;
+  font-weight: bold;
+  color: #000;
+  clip-path: inset(0% 100% 0% 0%);
+}
+.boxin {
+  width: 700px;
+  height: 300px;
+  background: #ffffff;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 10px 10px 1px black;
+  overflow: hidden;
+  
+}
+.boxtext{
+   font-family: "Jersey 10", sans-serif;
+   font-size: 0.7em;
+   letter-spacing: 2px;
+   font-weight: 300;
+}
+.boxcon{
+  position: relative;
+}
+.boxcon .dogy{
+  position: absolute;
+}
+.dogy:nth-child(2){
+  height: 100px;
+  transform: translateY(-180%);
+}
+.hello{
+  position: relative;
+  margin-bottom: -20px;
+   font-family: "Jersey 10", sans-serif;
+}
+
+
+/* Next page */
+.next-section {
+  height: 100vh;
+  background: #000000;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+/* Loading */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+/* Loading ends here */

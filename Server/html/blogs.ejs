@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My CRUD Blog <%= title %></title>
+  <style>
+    /* --- Reset & Base Styles --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      
+    }
+    body {
+      line-height: 1.6;
+      background-color: #f5f5f5;
+      color: #333;
+      text-decoration: none;
+      
+    }
+
+    /* --- Blog Grid --- */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    .blogs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .blog-card {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+    }
+    .blog-card h3 {
+      margin-bottom: 0.5rem;
+      color: #1e3a8a;
+    }
+    .blog-card p {
+      margin-bottom: 1rem;
+      color: #555;
+    }
+    .blog-card .meta {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+    .blog-card a {
+      text-decoration: none;
+      background-color: #1e3a8a;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .blog-card a:hover {
+      background-color: #facc15;
+      color: #000;
+    }
+
+    /* --- Footer --- */
+    footer {
+      background-color: #1e3a8a;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 0;
+      margin-top: 3rem;
+    }
+    .yet{
+      height: 100vh;
+    }
+    .container{
+      height: 100vh;
+    }
+
+    /* --- Responsive --- */
+    @media(max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+<%- include('./partials/nav.ejs') %>
+
+  <!-- Home Page / Blogs -->
+
+  <div class="container">
+  <h2 style="margin-bottom: 1.5rem; color:#1e3a8a;">Latest Blogs</h2>
+  <div class="blogs">
+    <% if(blogout.length > 0){ %>
+      <% blogout.forEach(blog => { %>
+        <div class="blog-card">
+          <h3><%= blog.title %></h3>
+          <div class="meta"><%= blog.author %></div>
+          <p><%= blog.content %></p>
+          <a href="/blogs/<%= blog._id %>" class="readmore-btn">Read More</a>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <div class="yet">
+      <h1>No Blogs Yet...</h1>
+      <a href="/add-blog" class="readmore-btn">Add_Blog</a>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 My Blog. All Rights Reserved. | Follow us on Social Media
+  </footer>
+</body>
+</html>

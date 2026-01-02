@@ -1,0 +1,43 @@
+  <style>
+    nav {
+      background-color: #1e3a8a;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #facc15; /* yellow hover */
+    }
+  </style>
+
+
+  <nav>
+    <div class="logo">My Blog</div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/add-blog">Add-Blog</a></li>
+      <li><a href="/">My Blogs</a></li>
+    </ul>
+  </nav>

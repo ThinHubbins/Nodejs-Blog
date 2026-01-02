@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 0.95rem;
+      opacity: 0.85;
+      transition: opacity 0.3s, border-bottom 0.3s;
+      padding-bottom: 4px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      opacity: 1;
+      border-bottom: 2px solid #00e0ff;
+    }
+
+    .about-section {
+      padding: 100px 20px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .about-container {
+      max-width: 800px;
+    }
+
+    .about-container h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .about-container p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat-box {
+      background: rgba(255,255,255,0.1);
+      padding: 30px 40px;
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      min-width: 180px;
+    }
+
+    .stat-box h2 {
+      font-size: 2.2rem;
+      color: #00e0ff;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+ <%- include('./partials/nav.ejs') %>
+
+  <section class="about-section">
+    <div class="about-container">
+      <h1>About Us</h1>
+      <p>
+        We are passionate about building modern digital experiences that are
+        fast, responsive, and visually engaging. Our focus is on clean design,
+        usability, and performance.
+      </p>
+      <p>
+        From simple websites to scalable web applications, we turn ideas into
+        products that make impact and deliver value.
+      </p>
+
+      <div class="stats">
+        <div class="stat-box">
+          <h2>5+</h2>
+          <span>Years Experience</span>
+        </div>
+        <div class="stat-box">
+          <h2>100+</h2>
+          <span>Projects Done</span>
+        </div>
+        <div class="stat-box">
+          <h2>50+</h2>
+          <span>Happy Clients</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 BrandName. All rights reserved.
+  </footer>
+
+</body>
+</html>

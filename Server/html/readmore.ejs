@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Post</title>
+
+  <style>
+    /* ===== Reset & Base ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.7;
+      height: 100vh;
+    }
+
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #1e3a8a;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #facc15;
+    }
+
+    /* ===== Blog Content ===== */
+    .container {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      height: 100vh;
+    }
+
+    .post-card {
+      background-color: #fff;
+      padding: 2.5rem;
+      border-radius: 14px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-title {
+      font-size: 2rem;
+      color: #1e3a8a;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-meta {
+      color: #888;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .post-content p {
+      margin-bottom: 1.2rem;
+      color: #444;
+    }
+
+    .post-content h3 {
+      margin: 2rem 0 1rem;
+      color: #1e3a8a;
+    }
+
+    /* ===== Back Button ===== */
+    .back-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      text-decoration: none;
+      background-color: #1e3a8a;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .back-btn:hover {
+      background-color: #facc15;
+      color: #000;
+      transform: translateY(-2px);
+    }
+    /* Delete Button Style */
+a.delete {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #dc2626; /* red */
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+a.delete:hover {
+  background-color: #f87171; /* lighter red on hover */
+  transform: scale(1.05); /* slight zoom effect */
+}
+
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: 3rem;
+      background-color: #1e3a8a;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .post-title {
+        font-size: 1.6rem;
+      }
+
+      .post-card {
+        padding: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+<%- include('./partials/nav.ejs') %>
+
+  <!-- Read More Content -->
+  <div class="container">
+    <article class="post-card">
+        
+ 
+      <div class="blog-card">
+        <h3><%= Blogs.title %></h3>
+        <div class="meta"><%= Blogs.author %></div>
+        <p><%= Blogs.content %></p>
+      </div>
+      
+<a class="delete" data-delete="<%= Blogs._id %>">DELETE</a>
+    </article>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 My Blog. All Rights Reserved.
+  </footer>
+<script>
+    const trash = document.querySelector('a.delete');
+
+    trash.addEventListener('click', (e)=>{
+        const endpoint = `/blogs/${trash.dataset.delete}`
+        fetch(endpoint, {
+            method: 'DELETE'
+        }).then((response)=> response.json()).then((data)=> window.location.href = data.redirect
+        ).catch(err => console.log(err)
+        )
+    })
+</script>
+</body>
+</html>
