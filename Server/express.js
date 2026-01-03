@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const Blogpost = require("./models/blog");
+const { result } = require("lodash");
 require('dotenv').config();
 
 
@@ -41,16 +42,19 @@ app.get("/add-blog", (req, res) => {
   res.render("Add-Blog", { title: "Add-Blog" });
 });
 app.post('/blogs', (req, res)=>{
-  const addblog = new Blogpost(req.body)
-  addblog.save().then((result)=>{
+  const postblogs = new Blogpost(req.body)
+  postblogs.save().then((result)=>{
     res.redirect('/blogs')
-  }).catch(err => console.log(err))
+    
+  })
 })
 app.get('/blogs/:id', (req, res)=>{
-    const id = req.params.id;
-    Blogpost.findById(id).then((result)=>{
-        res.render('readmore', {title: 'Readmore', Blogs: result})
-    }).catch((err)=> console.log(err))
+  const id = req.params.id;
+  Blogpost.findById(id).then((result)=>{
+    res.render('readmore', {title: 'Read', Blogs: result})
+    
+  }).catch(err => console.log(err)
+  )
 })
 app.delete('/blogs/:id', (req, res)=>{
     const id = req.params.id;
