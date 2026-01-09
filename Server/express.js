@@ -7,7 +7,7 @@ require('dotenv').config();
 
 
 const app = express();
-const dbURI = process.env.myURI
+const dbURI = process.env.myURI   
 
 mongoose  
   .connect(dbURI)
@@ -35,9 +35,9 @@ app.get("/blogs", (req, res) => {
     })
     .catch((err) => console.log(err));
 });
-app.get("/about", (req, res) => {
-  res.render("about", { title: "About" });
-});
+app.get('/about', (req, res)=>{
+  res.render('about', { title: 'About'})
+})
 app.get("/add-blog", (req, res) => {
   res.render("Add-Blog", { title: "Add-Blog" });
 });
